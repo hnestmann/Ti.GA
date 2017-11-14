@@ -224,4 +224,36 @@
                                                            currencyCode:currencyCode] build]];
 }
 
+-(void)createItemWithTransactionId:(id)args
+{
+    ENSURE_SINGLE_ARG(args,NSDictionary);
+    ENSURE_UI_THREAD(fireTransactionEvent, args);
+
+    NSString *transactionId = [TiUtils stringValue: @"transactionId" properties:args];
+    NSString *name = [TiUtils stringValue: @"name" properties:args];
+    NSString *sku = [TiUtils stringValue: @"sku" properties:args];
+    NSString *category = [TiUtils stringValue: @"category" properties:args];
+    NSNumber *price = [NSNumber numberWithFloat:[TiUtils floatValue:@"price" properties:args]];
+    NSNumber *quantity = [NSNumber numberWithFloat:[TiUtils floatValue:@"quantity" properties:args]];
+    NSString *currencyCode = [TiUtils stringValue: @"currency" properties:args];
+
+    if(_debug){
+        NSLog(@"[DEBUG] fireTransactionEvent transactionId: %@", transactionId);
+        NSLog(@"[DEBUG] fireTransactionEvent name: %@", name);
+        NSLog(@"[DEBUG] fireTransactionEvent sku: %@", sku);
+        NSLog(@"[DEBUG] fireTransactionEvent category: %@", category);
+        NSLog(@"[DEBUG] fireTransactionEvent price: %f", price);
+        NSLog(@"[DEBUG] fireTransactionEvent quantity: %f", quantity);
+        NSLog(@"[DEBUG] fireTransactionEvent currencyCode: %@", currencyCode);
+    }
+
+    [_tracker send:[[GAIDictionaryBuilder createItemWithTransactionId:transactionId
+                                                                        name:name
+                                                                          sku:sku
+                                                                    category:category
+                                                                    price:price
+                                                                    quantity:quantity
+                                                           currencyCode:currencyCode] build]];
+}
+
 @end
