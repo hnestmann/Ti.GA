@@ -8,13 +8,13 @@ This module was developed out the frustration of trying to support the full Goog
 <h2>Downloads</h2>
 Download the compiled modules at:
 
-* [Android](https://github.com/benbahrenburg/Ti.GA/tree/master/Android/dist)
+* [Android](https://github.com/benbahrenburg/Ti.GA/tree/master/android/dist)
 * [iOS](https://github.com/benbahrenburg/Ti.GA/tree/master/iphone/dist)
 
 <h2>Source</h2>
 Looking for the source? Check out the following:
 
-* [Android](https://github.com/benbahrenburg/Ti.GA/tree/master/Android/src/ti/ga)
+* [Android](https://github.com/benbahrenburg/Ti.GA/tree/master/android/src/ti/ga)
 * [iOS](https://github.com/benbahrenburg/Ti.GA/tree/master/iphone)
 
 <h2>How to...</h2>
@@ -66,18 +66,21 @@ ga.setTrackUncaughtExceptions();
 ~~~
 
 <b>Dispatch</b>
-The dispatch method submits data to Google Analytics.  Google Analytics will automatically do this for your, but you can "force" this programmatically.  If you are going to use this it should only be done while your application is not active and has a network connection.  
+The dispatch method submits data to Google Analytics. Google Analytics will automatically do this for your, but you can "force" this programmatically.  If you are going to use this it should only be done while your application is not active and has a network connection.  
 
 ~~~
 ga.dispatch();
 ~~~
 
 <h4>Creating a tracker</h4>
-var tracker = ga.createTracker({
-   trackingId:'YOUR GOOGLE ANALYTICS TRACKER ID',
-   useSecure:true,
-   debug:true 
-});
+
+~~~
+    var tracker = ga.createTracker({
+       trackingId:'YOUR GOOGLE ANALYTICS TRACKER ID',
+       useSecure:true,
+       debug:true
+    });
+~~~
 
 <h4>Adding Screen Viewed</h4>
 
